@@ -28,7 +28,7 @@ WHERE RESIDENZA = 'Catania'
 OR RESIDENZA = 'Palermo';
 
 # ==> NOT
-# Trova gli studenti che non hanno residenza a Milano.
+# Trova gli studenti che NON hanno residenza a Catania.
 SELECT * FROM STUDENTI
 WHERE NOT RESIDENZA = 'Catania';
 
