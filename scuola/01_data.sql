@@ -1,6 +1,3 @@
--- =========================
---  DATI: STUDENTI
--- =========================
 INSERT INTO studenti (nome, cognome, eta, residenza) VALUES
 ('Mario',    'Rossi',     19, 'Catania'),
 ('Giulia',   'Russo',     22, 'Siracusa'),
@@ -15,10 +12,6 @@ INSERT INTO studenti (nome, cognome, eta, residenza) VALUES
 ('Paolo',    'Costa',     28, 'Siracusa'),
 ('Noemi',    'Caputo',    19, 'Trapani');
 
--- =========================
--- 4) DATI: MATERIE
--- anno per filtri e GROUP BY
--- =========================
 INSERT INTO materie (nome, anno) VALUES
 ('Matematica', 1),
 ('Italiano',   1),
@@ -28,7 +21,7 @@ INSERT INTO materie (nome, anno) VALUES
 ('Fisica',     2);
 
 -- =========================
--- 5) DATI: VOTI
+-- VOTI
 -- (abbastanza righe per AVG/MIN/MAX/COUNT, GROUP BY, HAVING, JOIN)
 -- Profitto e condotta con casi:
 -- - promossi (profitto>=6 AND condotta>=7)

@@ -1,6 +1,3 @@
--- =========================
--- 2) SCHEMA
--- =========================
 CREATE TABLE studenti (
   id INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(50) NOT NULL,
@@ -19,8 +16,8 @@ CREATE TABLE voti (
   id INT PRIMARY KEY AUTO_INCREMENT,
   studente_id INT NOT NULL,
   materia_id INT NOT NULL,
-  profitto INT NOT NULL,   -- 1..10
-  condotta INT NOT NULL,   -- 1..10
+  profitto INT NOT NULL,   
+  condotta INT NOT NULL,   
   FOREIGN KEY (studente_id) REFERENCES studenti(id),
   FOREIGN KEY (materia_id) REFERENCES materie(id)
 );
