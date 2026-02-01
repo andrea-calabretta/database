@@ -1,125 +1,116 @@
 # 1. Mostrare tutto il contenuto della tabella.
-SELECT * FROM STUDENTI;
+SELECT * FROM studenti;
 
 # Mostrare solo il contenuto di alcune colonne della tabella.
-SELECT NOME, COGNOME
-FROM STUDENTI;
+SELECT nome, cognome
+FROM studenti;
 
 # 2. FILTRARE (LOGICA SEMPLICE)
 # Trova gli studenti che hanno residenza a Catania.
-SELECT * FROM STUDENTI
-WHERE RESIDENZA = 'Catania';
+SELECT * FROM studenti
+WHERE residenza = 'Catania';
 
 # =======================
 #  3. OPERATORI BOOLEANI
 # =======================
 # ==> AND
-# Trova tutti gli studenti promossi sia per profitto 
+# Trova tutte le iscrizioni promosse sia per profitto 
 # che per condotta.
-SELECT * FROM ISCRIZIONI
-WHERE PROFITTO >= 6
-AND CONDOTTA > 7;
+SELECT * FROM iscrizioni
+WHERE profitto >= 6
+AND condotta > 7;
 
 # ==> OR
 # Trova gli studenti che hanno residenza
 # o a Catania o a Palermo.
-SELECT * FROM STUDENTI
-WHERE RESIDENZA = 'Catania'
-OR RESIDENZA = 'Palermo';
+SELECT * FROM studenti
+WHERE residenza = 'Catania'
+OR residenza = 'Palermo';
 
 # ==> NOT
 # Trova gli studenti che NON hanno residenza a Catania.
-SELECT * FROM STUDENTI
-WHERE NOT RESIDENZA = 'Catania';
+SELECT * FROM studenti
+WHERE NOT residenza = 'Catania';
 
 # ====================
 #  4. Filtri avanzati
 # ====================
 # Trova gli studenti con età compresa tra 18 e 25 anni.
-SELECT * FROM STUDENTI
-WHERE ETA BETWEEN 18 AND 25;
+SELECT * FROM studenti
+WHERE eta BETWEEN 18 AND 25;
 
 # Trova gli studenti con residenza a Catania o Palermo.
-SELECT * FROM STUDENTI
-WHERE RESIDENZA IN ('Catania', 'Palermo');
+SELECT * FROM studenti
+WHERE residenza IN ('Catania', 'Palermo');
 # Confronta l'operatore IN con l'operatore OR.
 
 # ===============================
 #  5. LIKE - Match di un pattern 
 # ===============================
-# 	Like serve a individuare un testo che segue un pattern, 
-#   non una stringa esatta, come fatto in precedenza.
-
-#   %  ->  indica qualsiasi numero di caratteri (anche Zero)
-#   _  ->  indica esattamente un carattere
-
 # ==> Trova gli studenti, i cui cognomi cominciano con la lettera 'R'.
-SELECT * FROM STUDENTI
-WHERE COGNOME LIKE 'R%';
+SELECT * FROM studenti
+WHERE cognome LIKE 'R%';
 
 # ==> Trova gli studenti, i cui cognomi finiscono con la lettera 'i'.
-SELECT * FROM STUDENTI
-WHERE COGNOME LIKE '%i';
+SELECT * FROM studenti
+WHERE cognome LIKE '%i';
 
 # ==> Trova gli studenti, i cui cognomi hanno lunghezza di 5 lettere.
-SELECT * FROM STUDENTI
-WHERE COGNOME LIKE '_____';
+SELECT * FROM studenti
+WHERE cognome LIKE '_____';
 
 # ==> Trova gli studenti, i cui cognomi iniziano per 'R' e hanno 5 lettere.
-SELECT * FROM STUDENTI
-WHERE COGNOME LIKE 'R____';
+SELECT * FROM studenti
+WHERE cognome LIKE 'R____';
 
 # ==> Trova gli studenti, i cui cognomi hanno 'a' come seconda lettera.
-SELECT * FROM STUDENTI
-WHERE COGNOME LIKE '_a%';
+SELECT * FROM studenti
+WHERE cognome LIKE '_a%';
 
 # ==> Trova gli studenti, i cui cognomi che NON iniziano con 'R'.
-SELECT * FROM STUDENTI 
-WHERE COGNOME NOT LIKE 'R%';
+SELECT * FROM studenti 
+WHERE cognome NOT LIKE 'R%';
 
 # ==============
 #  6. ORDER BY 
 # ==============
 # Visualizza gli studenti in base ai cognomi in ordine alfabetico CRESCENTE.
-SELECT * FROM STUDENTI
-ORDER BY COGNOME ASC;
+SELECT * FROM studenti
+ORDER BY cognome ASC;
 
 # Visualizza gli studenti in base all'età in ordine DECRESCENTE.
-SELECT * FROM STUDENTI
-ORDER BY ETA DESC;
+SELECT * FROM studenti
+ORDER BY eta DESC;
 
 # =========================================================
 #  7. Funzione di Aggregazione (AVG, SUM, COUNT, MIN, MAX)
 # =========================================================
 # Conta il n° totale di studenti
-SELECT COUNT(*) FROM STUDENTI;
-SELECT COUNT(*) AS tot_studenti FROM STUDENTI;
-
+SELECT COUNT(*) FROM studenti;
+SELECT COUNT(*) AS tot_studenti FROM studenti;
 
 # Calcola il n° di studenti per città di residenza
-SELECT RESIDENZA, COUNT(*) FROM STUDENTI
-GROUP BY RESIDENZA;
+SELECT residenza, COUNT(*) FROM studenti
+GROUP BY residenza;
 
 # Calcola la media dei voti di profitto di tutti gli studenti (poco utile).
-SELECT AVG(PROFITTO) FROM ISCRIZIONI;
+SELECT AVG(profitto) FROM iscrizioni;
 
 # Calcola la media dei voti di profitto per ciascuno studente.
-SELECT STUDENTE_ID, AVG(PROFITTO) FROM ISCRIZIONI
-GROUP BY STUDENTE_ID;
-# Esigenza: non vediamo il nome e il cognome associato allo STUDENTE_ID; 
-# successivamente scopriremo come vederli
+SELECT id_studente, AVG(profitto) FROM iscrizioni
+GROUP BY id_studente;
+# Esigenza: non vediamo il nome e il cognome associato a id_studente; 
+# successivamente scopriremo come vederli (JOIN)
 
 # Per ogni materia, calcoliamo la media dei voti di profitto presi in generale.
-SELECT MATERIA_ID, AVG(PROFITTO) AS MEDIA FROM ISCRIZIONI
-GROUP BY MATERIA_ID;
+SELECT id_materia, AVG(profitto) AS media FROM iscrizioni
+GROUP BY id_materia;
 
 # Mostrami gli ID degli studenti e la loro media solo se maggiore o uguale a 7.
-SELECT STUDENTE_ID, AVG(PROFITTO) AS MEDIA FROM ISCRIZIONI
-GROUP BY STUDENTE_ID
-HAVING AVG(PROFITTO) >= 7;
+SELECT id_studente, AVG(profitto) AS media FROM iscrizioni
+GROUP BY id_studente
+HAVING AVG(profitto) >= 7;
 
 # ==========
 #  8. JOIN
 # ==========
-
-
