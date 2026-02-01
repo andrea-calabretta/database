@@ -12,7 +12,7 @@ CREATE TABLE materie (
   anno INT NOT NULL
 );
 
-CREATE TABLE voti (
+CREATE TABLE iscrizioni (
   id INT PRIMARY KEY AUTO_INCREMENT,
   studente_id INT NOT NULL,
   materia_id INT NOT NULL,

@@ -16,7 +16,7 @@ WHERE RESIDENZA = 'Catania';
 # ==> AND
 # Trova tutti gli studenti promossi sia per profitto 
 # che per condotta.
-SELECT * FROM VOTI
+SELECT * FROM ISCRIZIONI
 WHERE PROFITTO >= 6
 AND CONDOTTA > 7;
 
@@ -100,21 +100,21 @@ SELECT COUNT(*) AS tot_studenti FROM STUDENTI;
 SELECT RESIDENZA, COUNT(*) FROM STUDENTI
 GROUP BY RESIDENZA;
 
-# Calcola la media dei voti di tutti gli studenti (poco utile).
-SELECT AVG(PROFITTO) FROM VOTI;
+# Calcola la media dei voti di profitto di tutti gli studenti (poco utile).
+SELECT AVG(PROFITTO) FROM ISCRIZIONI;
 
-# Calcola la media dei voti per ciascuno studente.
-SELECT STUDENTE_ID, AVG(PROFITTO) FROM VOTI
+# Calcola la media dei voti di profitto per ciascuno studente.
+SELECT STUDENTE_ID, AVG(PROFITTO) FROM ISCRIZIONI
 GROUP BY STUDENTE_ID;
 # Esigenza: non vediamo il nome e il cognome associato allo STUDENTE_ID; 
 # successivamente scopriremo come vederli
 
-# Per ogni materia, calcoliamo la media dei voti presi in generale.
-SELECT MATERIA_ID, AVG(PROFITTO) AS MEDIA FROM VOTI
+# Per ogni materia, calcoliamo la media dei voti di profitto presi in generale.
+SELECT MATERIA_ID, AVG(PROFITTO) AS MEDIA FROM ISCRIZIONI
 GROUP BY MATERIA_ID;
 
 # Mostrami gli ID degli studenti e la loro media solo se maggiore o uguale a 7.
-SELECT STUDENTE_ID, AVG(PROFITTO) AS MEDIA FROM VOTI
+SELECT STUDENTE_ID, AVG(PROFITTO) AS MEDIA FROM ISCRIZIONI
 GROUP BY STUDENTE_ID
 HAVING AVG(PROFITTO) >= 7;
 
