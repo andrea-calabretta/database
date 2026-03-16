@@ -1,0 +1,46 @@
+*********************************
+*
+*  Per creare il grafo di film:
+*
+********************************
+
+CREATE (TheMatrix:Movie {title:'The Matrix', released:1999, tagline:'Welcome to the Real World'})
+CREATE (Keanu:Person {name:'Keanu Reeves', born:1964})
+CREATE (Carrie:Person {name:'Carrie-Anne Moss', born:1967})
+CREATE (Laurence:Person {name:'Laurence Fishburne', born:1961})
+CREATE (Hugo:Person {name:'Hugo Weaving', born:1960})
+CREATE (LillyW:Person {name:'Lilly Wachowski', born:1967})
+CREATE (LanaW:Person {name:'Lana Wachowski', born:1965})
+
+CREATE (Keanu)-[:ACTED_IN {roles:['Neo']}]->(TheMatrix)
+CREATE (Carrie)-[:ACTED_IN {roles:['Trinity']}]->(TheMatrix)
+CREATE (Laurence)-[:ACTED_IN {roles:['Morpheus']}]->(TheMatrix)
+CREATE (Hugo)-[:ACTED_IN {roles:['Agent Smith']}]->(TheMatrix)
+CREATE (LillyW)-[:DIRECTED]->(TheMatrix)
+CREATE (LanaW)-[:DIRECTED]->(TheMatrix)
+
+CREATE (TopGun:Movie {title:'Top Gun', released:1986, tagline:'I feel the need, the need for speed.'})
+CREATE (TomH:Person {name:'Tom Hanks', born:1956})
+CREATE (TomC:Person {name:'Tom Cruise', born:1962})
+CREATE (TomC)-[:ACTED_IN {roles:['Maverick']}]->(TopGun)
+
+RETURN "Dataset creato!" AS risultato
+
+**********************************
+*
+* Per visualizzarlo graficamente:
+*
+**********************************
+
+
+MATCH (n) RETURN n
+
+
+*************************************************
+*
+* Se vogliamo vedere solo gli attori di Matrix 
+*
+*************************************************
+
+MATCH (p:Person)-[r]->(m:Movie {title:'The Matrix'}) RETURN p, r, m
+
