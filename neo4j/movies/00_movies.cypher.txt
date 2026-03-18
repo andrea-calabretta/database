@@ -26,9 +26,19 @@ CREATE (TomC)-[:ACTED_IN {roles:['Maverick']}]->(TopGun)
 
 RETURN "Dataset creato!" AS risultato
 
+********************************************************
+*
+* Per visualizzarlo graficamente (sia archi che nodi):
+*
+********************************************************
+
+MATCH (n)-[r]->(m) RETURN n, r, m
+
+
+
 **********************************
 *
-* Per visualizzarlo graficamente:
+* Per vedere solo i nodi
 *
 **********************************
 
